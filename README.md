@@ -16,4 +16,6 @@ please create a database name 'saurabh' then  create a table name 'Lambdaaa' .
 In this table create columns name in order 'username1' , 'password1' , 'email1' , 'phone1' 
 first three hve the 'datatype varchar(30)' and the 'phone1' has data type 'BIGINT'<br />
 
-coderzzz123 and gamezz123 are my github account
+coderzzz123 and gamezz123 are my github account ,same person only.
+
+#Thankyou for reading this 
