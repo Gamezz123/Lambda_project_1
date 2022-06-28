@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter import messagebox
 
 import mysql.connector
+from matplotlib.pyplot import grid
 
 root = Tk()
 # width x height
@@ -49,7 +50,6 @@ def page2():
                 password1 = v6.get()
                 email1 = v7.get()
                 phone1 = v8.get()
-                print(username1)
                 if username1 == " " or password1 == " " or email1 == " " or phone1 == " ":
                     messagebox.showinfo("Error", "All fields are required")
                 else:
@@ -73,6 +73,7 @@ def page2():
                 root5.destroy()
 
                 def insert2():
+                    # the page3() would give you one view over your entered details
 
                     username1 = v10.get()
                     password1 = v20.get()
@@ -90,122 +91,127 @@ def page2():
                         data = cursor.fetchall()
                         con.close()
                         if not data:
-                            messagebox.showinfo("Error", "Invalid username or password")
+                            messagebox.showinfo("Error", "Invalid username or password , please run the code again")
                             exit()
+                        else:
+                            def page3():
+                                root8 = Tk()
+                                root8.title("ticket")
+                                Label(root8, text="Thanks For Choosing Airplane Booking System",
+                                      font=("Bauhaus 93", 17),
+                                      fg="White", bg="red", width=46).grid(row=0, column=0, columnspan=4)
+                                Label(root8, text="Ticket Details", font=("Bauhaus 93", 17), fg="Blue", width=46).grid(
+                                    row=1, column=0, columnspan=4)
+                                Label(root8, text="Passenger Name", font=("Arial", 14), fg="Blue").grid(row=2, column=1)
+                                q = name.get()
+                                Label(root8, text=q, font=("Arial", 14), fg="Blue").grid(row=2, column=2)
+                                Label(root8, text="Age", font=("Arial", 14), fg="Blue").grid(row=3, column=1)
+                                Label(root8, text=age.get(), font=("Arial", 14), fg="Blue").grid(row=3, column=2)
+                                Label(root8, text="Gender", font=("Arial", 14), fg="Blue").grid(row=4, column=1)
+                                if a.get() == 0:
+                                    Label(root8, text="Male", font=("Arial", 14), fg="Blue").grid(row=4, column=2)
+                                else:
+                                    Label(root8, text="Female", font=("Arial", 14), fg="Blue").grid(row=4, column=2)
+                                Label(root8, text="Class", font=("Arial", 14), fg="Blue").grid(row=5, column=1)
+                                Label(root8, text=v.get(), font=("Arial", 14), fg="Blue").grid(row=5, column=2)
+                                Label(root8, text="Additional Passenger Details", font=("Bauhaus 93", 17), fg="Blue",
+                                      width=46).grid(row=7, column=0, columnspan=4)
+                                Label(root8, text="Passenger Name", font=("Arial", 14), fg="Blue").grid(row=8, column=1)
+                                Label(root8, text=name1.get(), font=("Arial", 14), fg="Blue").grid(row=8, column=2)
+                                Label(root8, text="Class", font=("Arial", 14), fg="Blue").grid(row=9, column=1)
+                                Label(root8, text=v1.get(), font=("Arial", 14), fg="Blue").grid(row=9, column=2)
+                                Label(root8, text="Passenger Name", font=("Arial", 14), fg="Blue").grid(row=10,
+                                                                                                        column=1)
+                                Label(root8, text=name2.get(), font=("Arial", 14), fg="Blue").grid(row=10, column=2)
+                                Label(root8, text="Class", font=("Arial", 14), fg="Blue").grid(row=11, column=1)
+                                Label(root8, text=v2.get(), font=("Arial", 14), fg="Blue").grid(row=11, column=2)
+                                Label(root8, text="Passenger Name", font=("Arial", 14), fg="Blue").grid(row=12,
+                                                                                                        column=1)
+                                Label(root8, text=name3.get(), font=("Arial", 14), fg="Blue").grid(row=12, column=2)
+                                Label(root8, text="Class", font=("Arial", 14), fg="Blue").grid(row=13, column=1)
+                                Label(root8, text=v3.get(), font=("Arial", 14), fg="Blue").grid(row=13, column=2)
 
-                        def page3():
-                            root7 = Tk()
-                            root7.title("Ticket Details")
-                            Label(root7, text="Thanks For Choosing Airplane Booking System", font=("Bauhaus 93", 17),
-                                  fg="White", bg="red", width=46).grid(row=0, column=0, columnspan=4)
-                            Label(root7, text="Ticket Details", font=("Bauhaus 93", 17), fg="Blue", width=46).grid(
-                                row=1, column=0, columnspan=4)
-                            Label(root7, text="Passenger Name", font=("Arial", 14), fg="Blue").grid(row=2, column=1)
-                            q = name.get()
-                            Label(root7, text=q, font=("Arial", 14), fg="Blue").grid(row=2, column=2)
-                            Label(root7, text="Age", font=("Arial", 14), fg="Blue").grid(row=3, column=1)
-                            Label(root7, text=age.get(), font=("Arial", 14), fg="Blue").grid(row=3, column=2)
-                            Label(root7, text="Gender", font=("Arial", 14), fg="Blue").grid(row=4, column=1)
-                            if a.get() == 0:
-                                Label(root7, text="Male", font=("Arial", 14), fg="Blue").grid(row=4, column=2)
-                            else:
-                                Label(root7, text="Female", font=("Arial", 14), fg="Blue").grid(row=4, column=2)
-                            Label(root7, text="Class", font=("Arial", 14), fg="Blue").grid(row=5, column=1)
-                            Label(root7, text=v.get(), font=("Arial", 14), fg="Blue").grid(row=5, column=2)
-                            Label(root7, text="Additional Passenger Details", font=("Bauhaus 93", 17), fg="Blue",
-                                  width=46).grid(row=7, column=0, columnspan=4)
-                            Label(root7, text="Passenger Name", font=("Arial", 14), fg="Blue").grid(row=8, column=1)
-                            Label(root7, text=name1.get(), font=("Arial", 14), fg="Blue").grid(row=8, column=2)
-                            Label(root7, text="Class", font=("Arial", 14), fg="Blue").grid(row=9, column=1)
-                            Label(root7, text=v1.get(), font=("Arial", 14), fg="Blue").grid(row=9, column=2)
-                            Label(root7, text="Passenger Name", font=("Arial", 14), fg="Blue").grid(row=10, column=1)
-                            Label(root7, text=name2.get(), font=("Arial", 14), fg="Blue").grid(row=10, column=2)
-                            Label(root7, text="Class", font=("Arial", 14), fg="Blue").grid(row=11, column=1)
-                            Label(root7, text=v2.get(), font=("Arial", 14), fg="Blue").grid(row=11, column=2)
-                            Label(root7, text="Passenger Name", font=("Arial", 14), fg="Blue").grid(row=12, column=1)
-                            Label(root7, text=name3.get(), font=("Arial", 14), fg="Blue").grid(row=12, column=2)
-                            Label(root7, text="Class", font=("Arial", 14), fg="Blue").grid(row=13, column=1)
-                            Label(root7, text=v3.get(), font=("Arial", 14), fg="Blue").grid(row=13, column=2)
-                            Button(root7, text="PLEASE CLICK TO BOOK YOUR TICKETS", fg="white", font="algerian",
-                                   bg="red",
-                                   command=exit()).grid(row=19, columnspan=5)
+                                root6.destroy()
 
-                        root4.destroy()
-                        root6 = Tk()
-                        root6.title("Booking Portal")
-                        Label(root6, text="Booking Portal", font=("Times New Roman 93", 17), fg="White", width=46,
-                              bg="red").grid(row=1, column=0, columnspan=4)
-                        Label(root6, text="Enter Your Details", font=("Times New Roman 93", 14), fg="Blue",
-                              width=46).grid(row=2, column=0, columnspan=4)
-                        Label(root6, text="Full Name", font=("Times New Roman 93", 14), fg="blue").grid(row=3, column=1)
-                        name = Entry()
-                        name.grid(row=3, column=2)
-                        Label(root6, text="Enter Your age", font=("Times New Roman 93", 14), fg="Blue").grid(row=4,
-                                                                                                             column=1)
-                        age = Entry(width=4)
-                        age.grid(row=4, column=2)
-                        Label(root6, text="Select Gender", font=("Times New Roman 93", 14), fg="blue").grid(row=5,
+                            root4.destroy()
+                            root6 = Tk()
+                            root6.title("Booking Portal")
+                            Label(root6, text="Booking Portal", font=("Times New Roman 93", 17), fg="White", width=46,
+                                  bg="red").grid(row=1, column=0, columnspan=4)
+                            Label(root6, text="Enter Your Details", font=("Times New Roman 93", 14), fg="Blue",
+                                  width=46).grid(row=2, column=0, columnspan=4)
+                            Label(root6, text="Full Name", font=("Times New Roman 93", 14), fg="blue").grid(row=3,
                                                                                                             column=1)
-                        a = IntVar()
-                        Radiobutton(root6, text="Male", variable=a, value=0, fg="red").grid(row=5, column=2)
-                        Radiobutton(root6, text="Female", variable=a, value=1, fg="red").grid(row=5, column=3)
-                        Label(root6, text="Seat Class", font=("Times New Roman 93", 14), fg="blue").grid(row=6,
-                                                                                                         column=1)
-                        v = StringVar(root6)
-                        v.set("Select class")
-                        w = OptionMenu(root6, v, "First Class", "Business Class", "Economy Class")
-                        w.grid(row=6, column=2)
-                        Label(root6, text="Additional Passengers Details", font=("Times New Roman 93", 14), fg="Blue",
-                              width=46).grid(row=7, column=0, columnspan=4)
-                        Label(root6, text="Passenger 1", font=("Times New Roman 93", 14), fg="Blue").grid(row=8,
-                                                                                                          column=1)
-                        name1 = Entry()
-                        name1.grid(row=8, column=2)
-                        Label(root6, text="Enter age", font=("Times New Roman 93", 14), fg="Blue").grid(row=9, column=1)
-                        age1 = Entry(width=4)
-                        age1.grid(row=9, column=2)
-                        Label(root6, text="Seat Class", font=("Times New Roman 93", 14), fg="blue").grid(row=10,
-                                                                                                         column=1)
-                        v1 = StringVar(root6)
-                        v1.set("Select class")
-                        w1 = OptionMenu(root6, v1, "First Class", "Business Class", "Economy Class")
-                        w1.grid(row=10, column=2)
-                        Label(root6, text="Passenger 2", font=("Times New Roman 93", 14), fg="Blue").grid(row=11,
-                                                                                                          column=1)
-                        name2 = Entry()
-                        name2.grid(row=11, column=2)
-                        Label(root6, text="Enter age", font=("Times New Roman 93", 14), fg="Blue").grid(row=12,
-                                                                                                        column=1)
-                        age2 = Entry(width=4)
-                        age2.grid(row=12, column=2)
-                        Label(root6, text="Seat Class", font=("Times New Roman 93", 14), fg="blue").grid(row=13,
-                                                                                                         column=1)
-                        v2 = StringVar(root6)
-                        v2.set("Select class")
-                        w2 = OptionMenu(root6, v2, "First Class", "Business Class", "Economy Class")
-                        w2.grid(row=13, column=2)
-                        Label(root6, text="Passenger 3", font=("Times New Roman 93", 14), fg="Blue").grid(row=14,
-                                                                                                          column=1)
-                        name3 = Entry()
-                        name3.grid(row=14, column=2)
-                        Label(root6, text="Enter age", font=("Times New Roman 93", 14), fg="Blue").grid(row=15,
-                                                                                                        column=1)
-                        age3 = Entry(width=4)
-                        age3.grid(row=15, column=2)
-                        Label(root6, text="Seat Class", font=("Times New Roman 93", 14), fg="blue").grid(row=16,
-                                                                                                         column=1)
-                        v3 = StringVar(root6)
-                        v3.set("Select class")
-                        w3 = OptionMenu(root6, v3, "First Class", "Business Class", "Economy Class")
-                        w3.grid(row=16, column=2)
-                        Label(root6, text="Number of Passengers", font=("Times New Roman 93", 14), fg="blue").grid(
-                            row=18, column=1)
-                        v4 = StringVar(root6)
-                        v4.set("0")
-                        w4 = OptionMenu(root6, v4, "1", "2", "3", "4")
-                        w4.grid(row=18, column=2)
-                        Button(root6, text="Confirm Booking", fg="white", font="algerian", bg="red",
-                               command=lambda: page3()).grid(row=19, columnspan=5)
+                            name = Entry()
+                            name.grid(row=3, column=2)
+                            Label(root6, text="Enter Your age", font=("Times New Roman 93", 14), fg="Blue").grid(row=4,
+                                                                                                                 column=1)
+                            age = Entry(width=4)
+                            age.grid(row=4, column=2)
+                            Label(root6, text="Select Gender", font=("Times New Roman 93", 14), fg="blue").grid(row=5,
+                                                                                                                column=1)
+                            a = IntVar()
+                            Radiobutton(root6, text="Male", variable=a, value=0, fg="red").grid(row=5, column=2)
+                            Radiobutton(root6, text="Female", variable=a, value=1, fg="red").grid(row=5, column=3)
+                            Label(root6, text="Seat Class", font=("Times New Roman 93", 14), fg="blue").grid(row=6,
+                                                                                                             column=1)
+                            v = StringVar(root6)
+                            v.set("Select class")
+                            w = OptionMenu(root6, v, "First Class", "Business Class", "Economy Class")
+                            w.grid(row=6, column=2)
+                            Label(root6, text="Additional Passengers Details", font=("Times New Roman 93", 14),
+                                  fg="Blue",
+                                  width=46).grid(row=7, column=0, columnspan=4)
+                            Label(root6, text="Passenger 1", font=("Times New Roman 93", 14), fg="Blue").grid(row=8,
+                                                                                                              column=1)
+                            name1 = Entry()
+                            name1.grid(row=8, column=2)
+                            Label(root6, text="Enter age", font=("Times New Roman 93", 14), fg="Blue").grid(row=9,
+                                                                                                            column=1)
+                            age1 = Entry(width=4)
+                            age1.grid(row=9, column=2)
+                            Label(root6, text="Seat Class", font=("Times New Roman 93", 14), fg="blue").grid(row=10,
+                                                                                                             column=1)
+                            v1 = StringVar(root6)
+                            v1.set("Select class")
+                            w1 = OptionMenu(root6, v1, "First Class", "Business Class", "Economy Class")
+                            w1.grid(row=10, column=2)
+                            Label(root6, text="Passenger 2", font=("Times New Roman 93", 14), fg="Blue").grid(row=11,
+                                                                                                              column=1)
+                            name2 = Entry()
+                            name2.grid(row=11, column=2)
+                            Label(root6, text="Enter age", font=("Times New Roman 93", 14), fg="Blue").grid(row=12,
+                                                                                                            column=1)
+                            age2 = Entry(width=4)
+                            age2.grid(row=12, column=2)
+                            Label(root6, text="Seat Class", font=("Times New Roman 93", 14), fg="blue").grid(row=13,
+                                                                                                             column=1)
+                            v2 = StringVar(root6)
+                            v2.set("Select class")
+                            w2 = OptionMenu(root6, v2, "First Class", "Business Class", "Economy Class")
+                            w2.grid(row=13, column=2)
+                            Label(root6, text="Passenger 3", font=("Times New Roman 93", 14), fg="Blue").grid(row=14,
+                                                                                                              column=1)
+                            name3 = Entry()
+                            name3.grid(row=14, column=2)
+                            Label(root6, text="Enter age", font=("Times New Roman 93", 14), fg="Blue").grid(row=15,
+                                                                                                            column=1)
+                            age3 = Entry(width=4)
+                            age3.grid(row=15, column=2)
+                            Label(root6, text="Seat Class", font=("Times New Roman 93", 14), fg="blue").grid(row=16,
+                                                                                                             column=1)
+                            v3 = StringVar(root6)
+                            v3.set("Select class")
+                            w3 = OptionMenu(root6, v3, "First Class", "Business Class", "Economy Class")
+                            w3.grid(row=16, column=2)
+                            Label(root6, text="Number of Passengers", font=("Times New Roman 93", 14), fg="blue").grid(
+                                row=18, column=1)
+                            v4 = StringVar(root6)
+                            v4.set("0")
+                            w4 = OptionMenu(root6, v4, "1", "2", "3", "4")
+                            w4.grid(row=18, column=2)
+                            Button(root6, text="Confirm Booking", fg="white", font="algerian", bg="red",
+                                   command=page3).grid(row=19, columnspan=5)
 
                 # root3.destroy()
                 root4 = Tk()
