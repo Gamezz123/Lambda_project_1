@@ -61,13 +61,21 @@ def page2():
                         host="localhost", user="root", password="root", database="saurabh")
                     cursor = con.cursor()
                     lan = (username1, password1, email1, phone1)
+                    lan_us = (username1,password1)
 
-                    cursor.execute(
-                        "INSERT INTO Lambdaaa (username1,password1,email1,phone1) VALUES(%s,%s,%s,%s)", lan)
-                    cursor.execute("commit")
-                    messagebox.showinfo("Status", "Sign Up Successful")
-                    con.close()
-                    signin()
+                    cursor.execute("SELECT * FROM Lambdaaa WHERE username1= %s and password1 = %s",
+                                   lan_us)
+                    q_rey = cursor.fetchall()
+                    if not q_rey:
+                        cursor.execute(
+                            "INSERT INTO Lambdaaa (username1,password1,email1,phone1) VALUES(%s,%s,%s,%s)", lan)
+                        cursor.execute("commit")
+                        messagebox.showinfo("Status", "Sign Up Successful")
+                        con.close()
+                        signin()
+                    else:
+                        messagebox.showinfo("", "Username and password already exists,please try again")
+                        quit()
 
             def signin():
                 root5.destroy()
@@ -152,6 +160,9 @@ def page2():
                                     "Arial", 14), fg="Blue").grid(row=13, column=2)
 
                                 root6.destroy()
+                                # Button(root8, text="Final confirmation, please click to submit", fg="white",
+                                #        font="algerian", bg="red",
+                                #        command=quit()).grid(row=19, columnspan=5)
 
                             root4.destroy()
                             root6 = Tk()
