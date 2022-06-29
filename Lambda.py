@@ -61,11 +61,12 @@ def page2():
                         host="localhost", user="root", password="root", database="saurabh")
                     cursor = con.cursor()
                     lan = (username1, password1, email1, phone1)
-                    lan_us = (username1,password1)
+                    lan_us = (username1, password1)
 
-                    cursor.execute("SELECT * FROM Lambdaaa WHERE username1= %s and password1 = %s",
+                    cursor.execute("SELECT * FROM Lambdaaa WHERE username1= %s or password1 = %s",
                                    lan_us)
                     q_rey = cursor.fetchall()
+                    # checking whether the entered password or does not overlap with another same password
                     if not q_rey:
                         cursor.execute(
                             "INSERT INTO Lambdaaa (username1,password1,email1,phone1) VALUES(%s,%s,%s,%s)", lan)
@@ -74,7 +75,8 @@ def page2():
                         con.close()
                         signin()
                     else:
-                        messagebox.showinfo("", "Username and password already exists,please try again")
+                        messagebox.showinfo("", "Username and phone already exists,please enter new username or phone "
+                                                "number,try again")
                         quit()
 
             def signin():
