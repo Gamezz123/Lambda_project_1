@@ -9,6 +9,7 @@ Features:<br />
 3.database is stored on mysql<br />
 4.this used tkinter python gui <br />
 5.it has data for 4 destinations<br />
+6.Trying to make a typical airline booking portal with full security to your credentials
 
 IMP<br />
 database code will run in mysql workbench but if your system dont have mysql workbench then
